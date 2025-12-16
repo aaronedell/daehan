@@ -353,6 +353,7 @@ function showQuestions() {
     main.innerHTML = `
         <div class="nav-container">
             <button class="back-btn" onclick="showBeltSelection()">← Back to Belt Selection</button>
+            <button class="quiz-btn" onclick="startQuiz()">Start Quiz</button>
         </div>
         <h2 class="belt-title">${categoryName} - ${currentBelt}</h2>
         <div class="questions-container" id="questions-container"></div>
@@ -377,4 +378,276 @@ function goHome() {
     currentCategory = null;
     currentBelt = null;
     window.location.reload();
+}
+
+// Quiz state
+let quizQuestions = [];
+let currentQuizIndex = 0;
+let quizScore = 0;
+
+// Function to check if a question has a definitive answer (not student's own answer)
+function hasDefinitiveAnswer(answer) {
+    const studentAnswerPhrases = [
+        'student provides',
+        'student gives',
+        'student comes up with',
+        'student answers with',
+        'student names any'
+    ];
+    return !studentAnswerPhrases.some(phrase => answer.toLowerCase().includes(phrase));
+}
+
+// Function to generate distractors (wrong answers) for multiple choice
+function generateDistractors(correctAnswer, question, allQuestions) {
+    const distractors = [];
+    const questionLower = question.toLowerCase();
+
+    // Generate similar but incorrect answers based on question type
+    if (questionLower.includes('tae kwon do mean')) {
+        distractors.push('The art of the flying kick', 'The way of the peaceful warrior', 'The path of discipline and honor');
+    } else if (questionLower.includes('bow to black belts')) {
+        distractors.push('To show fear', 'To acknowledge their rank', 'Because it is tradition');
+    } else if (questionLower.includes('whom should we respect') || questionLower.includes('who should we respect')) {
+        distractors.push('Only black belts', 'Only adults', 'Only our instructors');
+    } else if (questionLower.includes('country') && questionLower.includes('tae kwon do')) {
+        distractors.push('Japan', 'China', 'Thailand');
+    } else if (questionLower.includes('capital of south korea')) {
+        distractors.push('Tokyo', 'Beijing', 'Busan');
+    } else if (questionLower.includes('wt stand for') || questionLower.includes('"wt"')) {
+        distractors.push('World Taekwondo', 'World Training Federation', 'Worldwide Taekwondo Federation');
+    } else if (questionLower.includes('how old') && questionLower.includes('tae kwon do')) {
+        distractors.push('Over 1,000 years old', 'Over 500 years old', 'Over 3,000 years old');
+    } else if (questionLower.includes('tenets')) {
+        distractors.push('Courage, Integrity, Perseverance, Self-Control, and Indomitable Spirit',
+                        'Courtesy, Honesty, Perseverance, Self-Control, and Indomitable Spirit',
+                        'Courtesy, Integrity, Discipline, Self-Control, and Indomitable Spirit');
+    } else if (questionLower.includes('respect') && questionLower.includes('mean')) {
+        distractors.push('Always say please and thank you', 'Listen to adults and follow rules', 'Be kind to everyone you meet');
+    } else if (questionLower.includes('integrity') && questionLower.includes('mean')) {
+        distractors.push('Doing your best in everything', 'Being brave and strong', 'Never giving up when things are hard');
+    } else if (questionLower.includes('perseverance') && questionLower.includes('mean')) {
+        distractors.push('Being strong and brave', 'Working hard and practicing', 'Being honest and truthful');
+    } else if (questionLower.includes('self-control') && (questionLower.includes('mean') || questionLower.includes('what is'))) {
+        distractors.push('Not getting angry or upset', 'Controlling your body movements', 'Following the rules at all times');
+    } else if (questionLower.includes('humble') && questionLower.includes('mean')) {
+        distractors.push('Being quiet and shy', 'Not talking about yourself', 'Being polite and respectful');
+    } else if (questionLower.includes('goal in tae kwon do')) {
+        distractors.push('Red belt', 'Master instructor', 'Perfect technique');
+    } else if (questionLower.includes('charriot')) {
+        distractors.push('Ready', 'Begin', 'Stop');
+    } else if (questionLower.includes('kyong ne')) {
+        distractors.push('Attention', 'Ready', 'Begin');
+    } else if (questionLower.includes('indomitable spirit') && questionLower.includes('mean')) {
+        distractors.push('Having a strong body and mind', 'Never showing fear or weakness', 'Always being confident and brave');
+    } else if (questionLower.includes('student creed #1')) {
+        distractors.push('I will develop self-discipline in order to bring out the best in myself and others',
+                        'I will use what I learn in class constructively and defensively',
+                        'I will respect my instructors and seniors at all times');
+    } else if (questionLower.includes('student creed #2')) {
+        distractors.push('I will develop myself in a positive manner and avoid anything that would reduce my mental growth',
+                        'I will use what I learn in class constructively and defensively',
+                        'I will always tell the truth and respect instructors');
+    } else if (questionLower.includes('student creed #3')) {
+        distractors.push('I will develop self-discipline in order to bring out the best in myself and others',
+                        'I will never misuse my Tae Kwon Do skills and always be respectful',
+                        'I will protect the weak and help others in need');
+    } else if (questionLower.includes('student oath')) {
+        distractors.push('I promise to always do my best, never give up, and become a black belt',
+                        'I will respect my parents, listen to my instructors, and train hard',
+                        'I shall be honest, work hard, help others, and never misuse Tae Kwon Do');
+    } else if (questionLower.includes('composition of tae kwon do')) {
+        distractors.push('Forms, Sparring, Breaking, Self-Defense, and Attitude',
+                        'Basic Techniques, Forms, Sparring, and Self-Defense',
+                        'Kicks, Punches, Blocks, Forms, and Sparring');
+    } else if (questionLower.includes('ethical rules')) {
+        distractors.push('Honesty to parents, respect for teachers, faithful to friends, truthful to oneself and others',
+                        'Obedience to instructors, respect for seniors, loyalty to friends, honesty to all',
+                        'Respect for parents, courtesy to elders, loyalty to friends, discipline to oneself');
+    } else if (questionLower.includes('theory of power')) {
+        distractors.push('Force, Speed, Concentration, Balance, Breath Control, and Mass',
+                        'Reaction Force, Focus, Equilibrium, Breathing, Speed, and Weight',
+                        'Power, Concentration, Balance, Breath Control, Speed, and Strength');
+    } else if (questionLower.includes('count from one to ten') || questionLower.includes('count ranking')) {
+        // Don't quiz on counting - too complex for multiple choice
+        return null;
+    } else {
+        // Generic distractors
+        distractors.push('Yes', 'No', 'Sometimes', 'It depends');
+    }
+
+    // If we couldn't generate enough specific distractors, return null
+    if (distractors.length < 3) {
+        return null;
+    }
+
+    return distractors.slice(0, 3);
+}
+
+// Function to start the quiz
+function startQuiz() {
+    const questions = studyData[currentCategory].questions[currentBelt];
+
+    // Filter questions with definitive answers
+    quizQuestions = questions.filter(q => hasDefinitiveAnswer(q.a));
+
+    if (quizQuestions.length === 0) {
+        alert('No quiz questions available for this belt level.');
+        return;
+    }
+
+    currentQuizIndex = 0;
+    quizScore = 0;
+    showQuizQuestion();
+}
+
+// Function to display a quiz question
+function showQuizQuestion() {
+    if (currentQuizIndex >= quizQuestions.length) {
+        showQuizResults();
+        return;
+    }
+
+    const main = document.querySelector('main');
+    const categoryName = currentCategory === 'tiny-tigers' ? 'Tiny Tigers' :
+                        currentCategory === 'junior' ? 'Junior' : 'Teen & Adult';
+
+    const currentQuestion = quizQuestions[currentQuizIndex];
+    const distractors = generateDistractors(currentQuestion.a, currentQuestion.q, quizQuestions);
+
+    // Skip questions we can't generate good distractors for
+    if (!distractors) {
+        currentQuizIndex++;
+        showQuizQuestion();
+        return;
+    }
+
+    // Create array of all answers and shuffle
+    const allAnswers = [currentQuestion.a, ...distractors];
+    shuffleArray(allAnswers);
+
+    main.innerHTML = `
+        <div class="nav-container">
+            <button class="back-btn" onclick="exitQuiz()">← Exit Quiz</button>
+        </div>
+        <h2 class="belt-title">${categoryName} - ${currentBelt} Quiz</h2>
+        <div class="quiz-container">
+            <div class="quiz-progress">Question ${currentQuizIndex + 1} of ${quizQuestions.length}</div>
+            <div class="quiz-score">Score: ${quizScore} / ${currentQuizIndex}</div>
+            <div class="quiz-question">
+                <div class="question">${currentQuestion.q}</div>
+                <div class="quiz-options" id="quiz-options">
+                    ${allAnswers.map((answer, index) => `
+                        <button class="quiz-option" onclick="checkAnswer('${escapeQuotes(answer)}', '${escapeQuotes(currentQuestion.a)}')">${answer}</button>
+                    `).join('')}
+                </div>
+            </div>
+            <div id="feedback" class="quiz-feedback"></div>
+        </div>
+    `;
+}
+
+// Helper function to escape quotes in strings for HTML
+function escapeQuotes(str) {
+    return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+}
+
+// Helper function to shuffle array
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+// Function to check the answer
+function checkAnswer(selectedAnswer, correctAnswer) {
+    const feedbackDiv = document.getElementById('feedback');
+    const optionsDiv = document.getElementById('quiz-options');
+    const buttons = optionsDiv.querySelectorAll('.quiz-option');
+
+    // Disable all buttons
+    buttons.forEach(btn => btn.disabled = true);
+
+    // Unescape quotes for comparison
+    selectedAnswer = selectedAnswer.replace(/\\'/g, "'");
+    correctAnswer = correctAnswer.replace(/\\'/g, "'");
+
+    const isCorrect = selectedAnswer === correctAnswer;
+
+    if (isCorrect) {
+        quizScore++;
+        feedbackDiv.innerHTML = `
+            <div class="feedback-correct">
+                ✓ Correct! Great job!
+            </div>
+            <button class="next-btn" onclick="nextQuestion()">Next Question →</button>
+        `;
+    } else {
+        feedbackDiv.innerHTML = `
+            <div class="feedback-incorrect">
+                ✗ Incorrect. The correct answer is: <strong>${correctAnswer}</strong>
+            </div>
+            <button class="next-btn" onclick="nextQuestion()">Next Question →</button>
+        `;
+    }
+
+    // Highlight correct and incorrect answers
+    buttons.forEach(btn => {
+        if (btn.textContent === correctAnswer) {
+            btn.classList.add('correct-answer');
+        } else if (btn.textContent === selectedAnswer && !isCorrect) {
+            btn.classList.add('incorrect-answer');
+        }
+    });
+}
+
+// Function to move to next question
+function nextQuestion() {
+    currentQuizIndex++;
+    showQuizQuestion();
+}
+
+// Function to show quiz results
+function showQuizResults() {
+    const main = document.querySelector('main');
+    const categoryName = currentCategory === 'tiny-tigers' ? 'Tiny Tigers' :
+                        currentCategory === 'junior' ? 'Junior' : 'Teen & Adult';
+
+    const percentage = Math.round((quizScore / quizQuestions.length) * 100);
+    let message = '';
+
+    if (percentage >= 90) {
+        message = 'Excellent! You have mastered this material!';
+    } else if (percentage >= 70) {
+        message = 'Good job! Keep practicing to improve further.';
+    } else if (percentage >= 50) {
+        message = 'You\'re making progress. Review the material and try again.';
+    } else {
+        message = 'Keep studying! Practice makes perfect.';
+    }
+
+    main.innerHTML = `
+        <div class="nav-container">
+            <button class="back-btn" onclick="showQuestions()">← Back to Study Guide</button>
+        </div>
+        <h2 class="belt-title">${categoryName} - ${currentBelt} Quiz Results</h2>
+        <div class="quiz-results">
+            <div class="results-score">
+                <div class="score-big">${quizScore} / ${quizQuestions.length}</div>
+                <div class="score-percentage">${percentage}%</div>
+            </div>
+            <div class="results-message">${message}</div>
+            <div class="results-actions">
+                <button class="quiz-btn" onclick="startQuiz()">Try Again</button>
+                <button class="back-btn" onclick="showQuestions()">Back to Study Guide</button>
+            </div>
+        </div>
+    `;
+}
+
+// Function to exit quiz
+function exitQuiz() {
+    if (confirm('Are you sure you want to exit the quiz? Your progress will be lost.')) {
+        showQuestions();
+    }
 }
