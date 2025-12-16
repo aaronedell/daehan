@@ -182,12 +182,9 @@ const studyData = {
         belts: [
             'White Belt or White Advanced Belt',
             'Yellow Belt or Yellow Advanced Belt',
-            'Orange Belt or Orange Advanced Belt',
-            'Green Belt or Green Advanced Belt',
-            'Purple Belt or Purple Advanced Belt',
+            'Green Belt',
             'Blue Belt or Blue Advanced Belt',
             'Red Belt or Red Advanced Belt',
-            'Brown Belt or Brown Advanced Belt',
             'Red & Black (Poom) Belt'
         ],
         questions: {
@@ -208,15 +205,7 @@ const studyData = {
                 { q: 'How old is Tae Kwon Do?', a: 'Over 2,000 years old.' },
                 { q: 'Student Promise', a: 'Student provides their own promise.' }
             ],
-            'Orange Belt or Orange Advanced Belt': [
-                { q: 'What are the five Tenets of Tae Kwon Do?', a: 'Courtesy, Integrity, Perseverance, Self-Control, and Indomitable Spirit.' },
-                { q: 'What is the meaning of the word "Commitment"?', a: 'Commitment means making a promise to do your best and not giving up, even when things are hard.' },
-                { q: 'Do you have commitment to becoming a better person?', a: 'Yes.' },
-                { q: 'What is the meaning of the word "Practice"?', a: 'Practice means repeating something again and again so you can improve and do your best.' },
-                { q: 'Are you willing to practice to become a better person?', a: 'Yes.' },
-                { q: 'Student Promise', a: 'Student provides their own promise.' }
-            ],
-            'Green Belt or Green Advanced Belt': [
+            'Green Belt': [
                 { q: 'Recite Student Creed #1.', a: 'I will develop myself in a positive manner and avoid anything that would reduce my mental growth or physical health.' },
                 { q: 'What is your goal in Tae Kwon Do?', a: 'Student provides their own answer.' },
                 { q: 'Why is it important to achieve your goals and not give up?', a: 'Because achieving goals builds discipline, confidence, and perseverance.' },
@@ -224,15 +213,6 @@ const studyData = {
                 { q: 'Why is it important to be humble?', a: 'Because humility helps prevent misuse of skills and encourages respect and growth.' },
                 { q: 'Do you help your parents or clean your room? (Teen)', a: 'Student provides their own answer.' },
                 { q: 'Do you finish your homework on time? (Teen)', a: 'Student provides their own answer.' },
-                { q: 'Student Promise', a: 'Student provides their own promise.' }
-            ],
-            'Purple Belt or Purple Advanced Belt': [
-                { q: 'Recite Student Creed #1 and #2.', a: 'I will develop myself in a positive manner and avoid anything that would reduce my mental growth or physical health. I will develop self-discipline in order to bring out the best in myself and others.' },
-                { q: 'What is perseverance?', a: 'Perseverance means continuing to work toward your goal without giving up.' },
-                { q: 'Why is perseverance important?', a: 'Because it allows you to overcome challenges and reach long-term goals.' },
-                { q: 'Why is it important to never misuse Tae Kwon Do?', a: 'Because Tae Kwon Do is meant for self-defense, discipline, and personal growth—not harm.' },
-                { q: 'What is self-control?', a: 'Self-control is the ability to manage your actions, emotions, and reactions.' },
-                { q: 'Why is it important to have self-control?', a: 'Because it helps you make good decisions and act responsibly.' },
                 { q: 'Student Promise', a: 'Student provides their own promise.' }
             ],
             'Blue Belt or Blue Advanced Belt': [
@@ -258,16 +238,7 @@ const studyData = {
                 { q: 'How do you follow the Ethical Rules of Tae Kwon Do in your life?', a: 'Student provides their own answer.' },
                 { q: 'Recite the Theory of Power.', a: 'Reaction Force, Concentration, Equilibrium, Breath Control, Speed, and Mass.' },
                 { q: 'What does earning a black belt mean to you, and why is it important?', a: 'Student provides their own answer.' },
-                { q: 'Now that you are close to becoming a black belt, how do you carry yourself?', a: 'Student provides their own answer.' }
-            ],
-            'Brown Belt or Brown Advanced Belt': [
-                { q: 'Recite the Ethical Rules of Tae Kwon Do.', a: 'Obedience to parents, respect for elders, faithfulness to friends, honesty to oneself and others, and always staying humble and never misusing your skills.' },
-                { q: 'How do you follow the Ethical Rules of Tae Kwon Do in your life?', a: 'Student provides their own answer.' },
-                { q: 'Recite the Theory of Power.', a: 'Reaction Force, Concentration, Equilibrium, Breath Control, Speed, and Mass.' },
-                { q: 'What does earning a black belt mean to you, and why is it important?', a: 'Student provides their own answer.' },
                 { q: 'Now that you are close to becoming a black belt, how do you carry yourself?', a: 'Student provides their own answer.' },
-                { q: 'What is discipline?', a: 'Discipline means doing what is right even when it is hard.' },
-                { q: 'Why is discipline important?', a: 'Student provides their own answer.' },
                 { q: 'Student Promise', a: 'Student provides their own promise.' }
             ],
             'Red & Black (Poom) Belt': [
