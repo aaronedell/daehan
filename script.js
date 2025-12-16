@@ -78,7 +78,7 @@ const studyData = {
             ],
             'Orange-Purple Belt': [
                 { q: 'What does "WT" stand for?', a: 'World Tae Kwon Do Federation, sir/ma\'am.' },
-                { q: 'Name two Tiny Tiger sparring rules.', a: 'Student names any two (example: no head contact, kick the chest protector only), sir/ma\'am.' }
+                { q: 'Name two Tiny Tiger sparring rules.', a: '(1) Must have full sparring gear on, (2) No head contact for Tiny Tigers, (3) Kick the chest protector only, (4) No kicking or punching below the waist or to the face, (5) Follow directions AT ALL TIMES!, (6) Always face your opponent and never try to run away, sir/ma\'am.' }
             ],
             'Orange-Blue Belt': [
                 { q: 'What does "Indomitable Spirit" mean?', a: 'Being strong and never giving up, even when things are hard, sir/ma\'am.' },
