@@ -353,7 +353,7 @@ function showQuestions() {
     main.innerHTML = `
         <div class="nav-container">
             <button class="back-btn" onclick="showBeltSelection()">← Back to Belt Selection</button>
-            <button class="quiz-btn" onclick="startQuiz()">Start Quiz</button>
+            ${currentCategory !== 'tiny-tigers' ? '<button class="quiz-btn" onclick="startQuiz()">Start Quiz</button>' : ''}
         </div>
         <h2 class="belt-title">${categoryName} - ${currentBelt}</h2>
         <div class="questions-container" id="questions-container"></div>
