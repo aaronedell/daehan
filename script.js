@@ -183,8 +183,10 @@ const studyData = {
             'White Belt or White Advanced Belt',
             'Yellow Belt or Yellow Advanced Belt',
             'Green Belt',
-            'Blue Belt or Blue Advanced Belt',
-            'Red Belt or Red Advanced Belt',
+            'Blue Belt',
+            'Blue Advanced Belt',
+            'Red Belt',
+            'Red Advanced Belt',
             'Red & Black (Poom) Belt'
         ],
         questions: {
@@ -215,7 +217,16 @@ const studyData = {
                 { q: 'Do you finish your homework on time? (Teen)', a: 'Student provides their own answer.' },
                 { q: 'Student Promise', a: 'Student provides their own promise.' }
             ],
-            'Blue Belt or Blue Advanced Belt': [
+            'Blue Belt': [
+                { q: 'Recite Student Creed #1 and #2.', a: 'I will develop myself in a positive manner and avoid anything that would reduce my mental growth or physical health. I will develop self-discipline in order to bring out the best in myself and others.' },
+                { q: 'What is perseverance?', a: 'Perseverance means continuing to work toward your goal without giving up.' },
+                { q: 'Why is perseverance important?', a: 'Because it allows you to overcome challenges and reach long-term goals.' },
+                { q: 'Why is it important to never misuse Tae Kwon Do?', a: 'Because Tae Kwon Do is meant for self-defense, discipline, and personal growth—not harm.' },
+                { q: 'What is self-control?', a: 'Self-control is the ability to manage your actions, emotions, and reactions.' },
+                { q: 'Why is it important to have self-control?', a: 'Because it helps you make good decisions and act responsibly.' },
+                { q: 'Student Promise', a: 'Student provides their own promise.' }
+            ],
+            'Blue Advanced Belt': [
                 { q: 'Recite Student Creed #1 through #3.', a: 'I will develop myself in a positive manner and avoid anything that would reduce my mental growth or physical health. I will develop self-discipline in order to bring out the best in myself and others. I will use what I learn in class constructively and defensively, to help myself and others and never be abusive or offensive.' },
                 { q: 'Count ranking from 1st to 10th in Korean.', a: 'Il, Ee, Sam, Sah, Oh, Yuk, Chil, Pahl, Koo, Sip.' },
                 { q: 'How has Tae Kwon Do training helped your life?', a: 'Student provides their own answer.' },
@@ -225,7 +236,7 @@ const studyData = {
                 { q: 'Are you a better person at school or work? How?', a: 'Student provides their own answer.' },
                 { q: 'Student Promise', a: 'Student provides their own promise.' }
             ],
-            'Red Belt or Red Advanced Belt': [
+            'Red Belt': [
                 { q: 'Recite the Student Oath.', a: 'I shall always tell the truth. I shall respect instructors and seniors. I will be a stronger person in front of a strong person and a weaker person in front of a weak person. I will never misuse Tae Kwon Do. Student Promise.' },
                 { q: 'How do you follow the Student Oath in your life?', a: 'Student provides their own answer.' },
                 { q: 'What does it mean to be a leader?', a: 'Student provides their own answer.' },
@@ -233,7 +244,9 @@ const studyData = {
                 { q: 'Recite the Composition of Tae Kwon Do.', a: 'Basic Techniques, Forms, Sparring, Breaking, and Attitude.' },
                 { q: 'What advice would you give to lower belts?', a: 'Student provides their own answer.' },
                 { q: 'What was your goal when you started learning Tae Kwon Do?', a: 'Student provides their own answer.' },
-                { q: 'Student Promise', a: 'Student provides their own promise.' },
+                { q: 'Student Promise', a: 'Student provides their own promise.' }
+            ],
+            'Red Advanced Belt': [
                 { q: 'Recite the Ethical Rules of Tae Kwon Do.', a: 'Obedience to parents, respect for elders, faithfulness to friends, honesty to oneself and others, and always staying humble and never misusing your skills.' },
                 { q: 'How do you follow the Ethical Rules of Tae Kwon Do in your life?', a: 'Student provides their own answer.' },
                 { q: 'Recite the Theory of Power.', a: 'Reaction Force, Concentration, Equilibrium, Breath Control, Speed, and Mass.' },
