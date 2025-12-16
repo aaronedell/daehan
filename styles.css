@@ -1,0 +1,270 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-red: #e00000;
+    --dark-maroon: #110000;
+    --light-bg: #ffffff;
+    --text-dark: #333333;
+    --text-light: #666666;
+    --border-color: #dddddd;
+}
+
+body {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: var(--light-bg);
+    border-radius: 8px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 3rem;
+    color: var(--primary-red);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+header h2 {
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 1.8rem;
+    color: var(--dark-maroon);
+    font-weight: 400;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    background-color: var(--light-bg);
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.intro-text {
+    text-align: center;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+/* Navigation */
+.nav-container {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.back-btn {
+    display: inline-block;
+    background-color: var(--text-light);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.back-btn:hover {
+    background-color: var(--text-dark);
+}
+
+/* Button Grid */
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.category-btn,
+.belt-btn {
+    background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-maroon) 100%);
+    color: white;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 50px 30px;
+    font-size: 1.8rem;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.category-btn {
+    border: none;
+    box-shadow: 0 4px 15px rgba(224, 0, 0, 0.3);
+}
+
+.category-btn:hover,
+.belt-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(224, 0, 0, 0.4);
+}
+
+.category-btn:active,
+.belt-btn:active {
+    transform: translateY(-2px);
+}
+
+.btn-text {
+    display: block;
+}
+
+/* Questions and Answers */
+.questions-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.question-block {
+    background-color: #fafafa;
+    border-left: 4px solid var(--primary-red);
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.question {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark-maroon);
+    margin-bottom: 15px;
+}
+
+.answer {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+    padding-left: 20px;
+}
+
+.belt-title {
+    text-align: center;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 2.5rem;
+    color: var(--primary-red);
+    margin-bottom: 30px;
+    text-transform: capitalize;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    header h2 {
+        font-size: 1.4rem;
+    }
+
+    main {
+        padding: 25px;
+    }
+
+    .intro-text {
+        font-size: 1.2rem;
+    }
+
+    .category-btn,
+    .belt-btn {
+        padding: 40px 20px;
+        font-size: 1.5rem;
+    }
+
+    .button-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .question {
+        font-size: 1.1rem;
+    }
+
+    .answer {
+        font-size: 1rem;
+    }
+
+    .belt-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 25px 15px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header h2 {
+        font-size: 1.2rem;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    .category-btn,
+    .belt-btn {
+        padding: 35px 15px;
+        font-size: 1.3rem;
+    }
+
+    .question-block {
+        padding: 20px;
+    }
+}
+
+/* Hidden class for toggling */
+.hidden {
+    display: none;
+}
