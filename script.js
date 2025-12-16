@@ -404,11 +404,11 @@ function generateDistractors(correctAnswer, question, allQuestions) {
 
     // Generate similar but incorrect answers based on question type
     if (questionLower.includes('tae kwon do mean')) {
-        distractors.push('The art of the flying kick', 'The way of the peaceful warrior', 'The path of discipline and honor');
+        distractors.push('The art of the flying kick and powerful strikes', 'The way of the peaceful warrior and meditation', 'The path of discipline, honor, and martial excellence');
     } else if (questionLower.includes('bow to black belts')) {
-        distractors.push('To show fear', 'To acknowledge their rank', 'Because it is tradition');
+        distractors.push('To show fear and acknowledge their power', 'To acknowledge their rank and superior skill', 'Because it is tradition and required by the rules');
     } else if (questionLower.includes('whom should we respect') || questionLower.includes('who should we respect')) {
-        distractors.push('Only black belts', 'Only adults', 'Only our instructors');
+        distractors.push('Only black belts and instructors', 'Only adults and people older than us', 'Only our instructors and senior students');
     } else if (questionLower.includes('country') && questionLower.includes('tae kwon do')) {
         distractors.push('Japan', 'China', 'Thailand');
     } else if (questionLower.includes('capital of south korea')) {
@@ -422,57 +422,99 @@ function generateDistractors(correctAnswer, question, allQuestions) {
                         'Courtesy, Honesty, Perseverance, Self-Control, and Indomitable Spirit',
                         'Courtesy, Integrity, Discipline, Self-Control, and Indomitable Spirit');
     } else if (questionLower.includes('respect') && questionLower.includes('mean')) {
-        distractors.push('Always say please and thank you', 'Listen to adults and follow rules', 'Be kind to everyone you meet');
+        distractors.push('Always say please and thank you to everyone you meet',
+                        'Listen to adults and follow all the rules they give you',
+                        'Be kind to everyone you meet and never say anything mean');
+    } else if (questionLower.includes('attitude') && questionLower.includes('mean')) {
+        distractors.push('Attitude means being positive and happy all the time, never getting upset or sad, and always smiling',
+                        'Attitude means how hard you work in class and how much effort you put into learning new techniques',
+                        'Attitude means following all the rules, listening to your instructors, and doing what you are told to do');
+    } else if (questionLower.includes('commitment') && questionLower.includes('mean')) {
+        distractors.push('Commitment means showing up to class on time and wearing your uniform properly every single time',
+                        'Commitment means listening to your instructors and following all their directions without asking questions',
+                        'Commitment means working harder than everyone else and becoming the best student in your class');
+    } else if (questionLower.includes('practice') && questionLower.includes('mean')) {
+        distractors.push('Practice means going to every class and never missing a single training session at the dojang',
+                        'Practice means watching other people do techniques and learning from what they do correctly',
+                        'Practice means listening carefully to your instructor and memorizing everything they teach you in class');
     } else if (questionLower.includes('integrity') && questionLower.includes('mean')) {
-        distractors.push('Doing your best in everything', 'Being brave and strong', 'Never giving up when things are hard');
+        distractors.push('Doing your best in everything you try and never giving up on anything',
+                        'Being brave and strong in difficult situations and standing up for yourself',
+                        'Never giving up when things are hard and always finishing what you start');
     } else if (questionLower.includes('perseverance') && questionLower.includes('mean')) {
-        distractors.push('Being strong and brave', 'Working hard and practicing', 'Being honest and truthful');
+        distractors.push('Being strong and brave in difficult situations and never showing weakness',
+                        'Working hard and practicing every day until you become a black belt',
+                        'Being honest and truthful with everyone and never telling lies to anyone');
     } else if (questionLower.includes('self-control') && (questionLower.includes('mean') || questionLower.includes('what is'))) {
-        distractors.push('Not getting angry or upset', 'Controlling your body movements', 'Following the rules at all times');
+        distractors.push('Not getting angry or upset when things do not go the way you want them to',
+                        'Controlling your body movements and having perfect balance in all your techniques',
+                        'Following the rules at all times and doing exactly what your instructors tell you');
     } else if (questionLower.includes('humble') && questionLower.includes('mean')) {
-        distractors.push('Being quiet and shy', 'Not talking about yourself', 'Being polite and respectful');
-    } else if (questionLower.includes('goal in tae kwon do')) {
-        distractors.push('Red belt', 'Master instructor', 'Perfect technique');
+        distractors.push('Being quiet and shy around other people and not talking very much to anyone',
+                        'Not talking about yourself or your accomplishments and letting others speak first',
+                        'Being polite and respectful to everyone you meet and using good manners always');
+    } else if (questionLower.includes('courtesy') && questionLower.includes('mean')) {
+        distractors.push('Being polite to everyone and always using your best manners in all situations',
+                        'Helping others when they need it and being a good friend to everyone',
+                        'Respecting your instructors and following all the rules of the dojang');
+    } else if (questionLower.includes('goal in tae kwon do') || questionLower.includes('goal')) {
+        distractors.push('Red belt and then continuing to train harder', 'Master instructor and opening my own school', 'Perfect technique in all my forms and sparring');
     } else if (questionLower.includes('charriot')) {
         distractors.push('Ready', 'Begin', 'Stop');
     } else if (questionLower.includes('kyong ne')) {
         distractors.push('Attention', 'Ready', 'Begin');
     } else if (questionLower.includes('indomitable spirit') && questionLower.includes('mean')) {
-        distractors.push('Having a strong body and mind', 'Never showing fear or weakness', 'Always being confident and brave');
+        distractors.push('Having a strong body and mind that can overcome any challenge or obstacle',
+                        'Never showing fear or weakness to anyone even when you are scared inside',
+                        'Always being confident and brave in everything you do without any doubt');
+    } else if (questionLower.includes('choice') && questionLower.includes('mean')) {
+        distractors.push('Choice means picking what you want to do and then doing it the best you can every time',
+                        'Choice means thinking carefully before you act and making sure you follow all the rules',
+                        'Choice means listening to your parents and instructors and doing what they tell you to do');
+    } else if (questionLower.includes('discipline') && questionLower.includes('mean')) {
+        distractors.push('Discipline means practicing every day and never missing class or taking breaks from training',
+                        'Discipline means following all the rules and listening to your instructors at all times',
+                        'Discipline means working harder than everyone else and always giving one hundred percent effort');
     } else if (questionLower.includes('student creed #1')) {
         distractors.push('I will develop self-discipline in order to bring out the best in myself and others',
-                        'I will use what I learn in class constructively and defensively',
-                        'I will respect my instructors and seniors at all times');
+                        'I will use what I learn in class constructively and defensively to help myself and others',
+                        'I will respect my instructors and seniors at all times and follow all the rules of the dojang');
     } else if (questionLower.includes('student creed #2')) {
         distractors.push('I will develop myself in a positive manner and avoid anything that would reduce my mental growth',
-                        'I will use what I learn in class constructively and defensively',
-                        'I will always tell the truth and respect instructors');
+                        'I will use what I learn in class constructively and defensively to help myself and others',
+                        'I will always tell the truth and respect my instructors and seniors at all times');
     } else if (questionLower.includes('student creed #3')) {
-        distractors.push('I will develop self-discipline in order to bring out the best in myself and others',
-                        'I will never misuse my Tae Kwon Do skills and always be respectful',
-                        'I will protect the weak and help others in need');
+        distractors.push('I will develop self-discipline in order to bring out the best in myself and others at all times',
+                        'I will never misuse my Tae Kwon Do skills and always be respectful to everyone I meet',
+                        'I will protect the weak and help others in need using my Tae Kwon Do training properly');
     } else if (questionLower.includes('student oath')) {
-        distractors.push('I promise to always do my best, never give up, and become a black belt',
-                        'I will respect my parents, listen to my instructors, and train hard',
-                        'I shall be honest, work hard, help others, and never misuse Tae Kwon Do');
+        distractors.push('I promise to always do my best, never give up on my goals, and become a black belt someday',
+                        'I will respect my parents, listen to my instructors, and train hard every single day',
+                        'I shall be honest with everyone, work hard in all I do, help others, and never misuse Tae Kwon Do');
     } else if (questionLower.includes('composition of tae kwon do')) {
         distractors.push('Forms, Sparring, Breaking, Self-Defense, and Attitude',
                         'Basic Techniques, Forms, Sparring, and Self-Defense',
                         'Kicks, Punches, Blocks, Forms, and Sparring');
     } else if (questionLower.includes('ethical rules')) {
         distractors.push('Honesty to parents, respect for teachers, faithful to friends, truthful to oneself and others',
-                        'Obedience to instructors, respect for seniors, loyalty to friends, honesty to all',
-                        'Respect for parents, courtesy to elders, loyalty to friends, discipline to oneself');
+                        'Obedience to instructors, respect for seniors, loyalty to friends, honesty to all people',
+                        'Respect for parents, courtesy to elders, loyalty to friends, discipline to oneself and others');
     } else if (questionLower.includes('theory of power')) {
         distractors.push('Force, Speed, Concentration, Balance, Breath Control, and Mass',
                         'Reaction Force, Focus, Equilibrium, Breathing, Speed, and Weight',
                         'Power, Concentration, Balance, Breath Control, Speed, and Strength');
-    } else if (questionLower.includes('count from one to ten') || questionLower.includes('count ranking')) {
-        // Don't quiz on counting - too complex for multiple choice
+    } else if (questionLower.includes('why') && questionLower.includes('important')) {
+        // For "why is it important" questions, skip them - they're asking for reasoning
+        return null;
+    } else if (questionLower.includes('count from one to ten') || questionLower.includes('count ranking') || questionLower.includes('name two') || questionLower.includes('sparring rules')) {
+        // Don't quiz on counting or listing questions - too complex for multiple choice
+        return null;
+    } else if (questionLower.includes('do you') || questionLower.includes('are you') || questionLower.includes('have you')) {
+        // Yes/No questions about personal behavior - skip these
         return null;
     } else {
-        // Generic distractors
-        distractors.push('Yes', 'No', 'Sometimes', 'It depends');
+        // For any other unhandled questions, don't generate a quiz
+        return null;
     }
 
     // If we couldn't generate enough specific distractors, return null
