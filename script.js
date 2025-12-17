@@ -529,8 +529,12 @@ function generateDistractors(correctAnswer, question, allQuestions) {
 function startQuiz() {
     const questions = studyData[currentCategory].questions[currentBelt];
 
-    // Filter questions with definitive answers
-    quizQuestions = questions.filter(q => hasDefinitiveAnswer(q.a));
+    // Filter questions with definitive answers AND that can generate good distractors
+    quizQuestions = questions.filter(q => {
+        if (!hasDefinitiveAnswer(q.a)) return false;
+        const distractors = generateDistractors(q.a, q.q, questions);
+        return distractors !== null;
+    });
 
     if (quizQuestions.length === 0) {
         alert('No quiz questions available for this belt level.');
@@ -555,13 +559,6 @@ function showQuizQuestion() {
 
     const currentQuestion = quizQuestions[currentQuizIndex];
     const distractors = generateDistractors(currentQuestion.a, currentQuestion.q, quizQuestions);
-
-    // Skip questions we can't generate good distractors for
-    if (!distractors) {
-        currentQuizIndex++;
-        showQuizQuestion();
-        return;
-    }
 
     // Create array of all answers and shuffle
     const allAnswers = [currentQuestion.a, ...distractors];
