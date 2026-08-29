@@ -8,11 +8,13 @@ const studyData = {
             'White-Green Belt',
             'White-Purple Belt',
             'White-Blue Belt',
+            'Yellow Belt',
             'Yellow-White Belt',
             'Yellow-Orange Belt',
             'Yellow-Green Belt',
             'Yellow-Purple Belt',
             'Yellow-Blue Belt',
+            'Orange Belt',
             'Orange-White Belt',
             'Orange-Yellow Belt',
             'Orange-Green Belt',
@@ -44,6 +46,10 @@ const studyData = {
                 { q: 'What does the word "Humble" mean?', a: 'Being nice to others and not showing off, sir/ma\'am.' },
                 { q: 'Why is it important to be humble?', a: 'Student gives their own answer.' }
             ],
+            'Yellow Belt': [
+                { q: 'What does the word "Teamwork" mean?', a: 'Working together, sir/ma\'am.' },
+                { q: 'Why is teamwork important?', a: 'Student gives their own answer.' }
+            ],
             'Yellow-White Belt': [
                 { q: 'What does the word "Respect" mean?', a: 'Treat others the way you want to be treated and treat things the way you want your own things to be treated, sir/ma\'am.' },
                 { q: 'Recite the Tenets of Tae Kwon Do.', a: 'Courtesy, Integrity, Perseverance, Self-Control, and Indomitable Spirit, sir/ma\'am.' }
@@ -64,6 +70,10 @@ const studyData = {
                 { q: 'What is your goal in Tae Kwon Do?', a: 'Black belt, sir/ma\'am.' },
                 { q: 'Why is it important to reach your goal?', a: 'Student gives their own answer.' }
             ],
+            'Orange Belt': [
+                { q: 'What does "Gratitude" mean?', a: 'Being thankful for everything you have, sir/ma\'am.' },
+                { q: 'Why is gratitude important?', a: 'Student gives their own answer.' }
+            ],
             'Orange-White Belt': [
                 { q: 'How do you show self-control at home?', a: 'Student gives their own answer.' },
                 { q: 'Recite Student Creed #1.', a: 'I will develop myself in a positive manner and avoid anything that would reduce my mental growth or physical health, sir/ma\'am.' }
@@ -77,8 +87,8 @@ const studyData = {
                 { q: 'What does the word "Courtesy" mean?', a: 'Thinking of others first, sir/ma\'am.' }
             ],
             'Orange-Purple Belt': [
-                { q: 'What does "WT" stand for?', a: 'World Tae Kwon Do Federation, sir/ma\'am.' },
-                { q: 'Name two Tiny Tiger sparring rules.', a: '(1) Must have full sparring gear on, (2) No head contact for Tiny Tigers, (3) Kick the chest protector only, (4) No kicking or punching below the waist or to the face, (5) Follow directions AT ALL TIMES!, (6) Always face your opponent and never try to run away, sir/ma\'am.' }
+                { q: 'What does "Commitment" mean?', a: 'A big promise that you should always keep, sir/ma\'am.' },
+                { q: 'Why is commitment important?', a: 'Student gives their own answer.' }
             ],
             'Orange-Blue Belt': [
                 { q: 'What does "Indomitable Spirit" mean?', a: 'Being strong and never giving up, even when things are hard, sir/ma\'am.' },
